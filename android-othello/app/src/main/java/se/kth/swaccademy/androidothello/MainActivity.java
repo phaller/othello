@@ -1,7 +1,9 @@
 package se.kth.swaccademy.androidothello;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import kth.game.othello.Othello;
 import kth.game.othello.OthelloFactory;
@@ -37,5 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 boardView.invalidate();
             }
         });
+    }
+
+    public void quitGame(View view) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        super.finish();
     }
 }

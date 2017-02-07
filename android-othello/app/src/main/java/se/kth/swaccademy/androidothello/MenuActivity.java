@@ -18,4 +18,5 @@ public class MenuActivity extends AppCompatActivity {
         intent.putExtra(MainActivity.GAME_TYPE, MainActivity.GAME_HUMAN);
         startActivity(intent);
     }
+
 }
