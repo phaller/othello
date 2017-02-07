@@ -93,7 +93,7 @@ public class OthelloImp implements Othello {
         res.add(newNode);
 
         swapPlayer();
-        
+
         return res;
     }
 

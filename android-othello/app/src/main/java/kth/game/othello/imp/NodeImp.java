@@ -45,10 +45,10 @@ public class NodeImp implements Node {
         return (playerId != null);
     }
 
-    public static int getXCoordinate(String nodeId) {
+    private static int getXCoordinate(String nodeId) {
         return Integer.valueOf(nodeId.split(",")[0]);
     }
-    public static int getYCoordinate(String nodeId) {
+    private static int getYCoordinate(String nodeId) {
         return Integer.valueOf(nodeId.split(",")[1]);
     }
 

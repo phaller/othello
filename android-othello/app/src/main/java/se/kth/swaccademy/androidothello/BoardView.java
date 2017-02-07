@@ -9,11 +9,19 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+import kth.game.othello.board.Board;
+import kth.game.othello.board.Node;
+
 /**
  * Created by robertog on 2/7/17.
  */
 
 public class BoardView extends View {
+    private Board model;
+
+    public void setModel(Board model) {
+        this.model = model;
+    }
 
     public interface BoardViewListener {
         public void onClick(int x, int y);
@@ -50,7 +58,8 @@ public class BoardView extends View {
         int width = getWidth();
         Paint blackPaint = new Paint();
         Paint whitePaint = new Paint();
-        whitePaint.setARGB(0, 255, 255, 255);
+
+        whitePaint.setARGB(255, 255, 255, 255);
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 RectF rect = new RectF(width/8*i, height/8*j, width/8*(i+1), height/8*(j+1));
@@ -60,12 +69,28 @@ public class BoardView extends View {
                     canvas.drawRect(rect, whitePaint);
             }
         }
+
         /*
         Resources res = getResources();
         Drawable draw = res.getDrawable(R.drawable.kth);
         draw.setBounds(width/8*xpos, height/8*ypos, width/8*(xpos+1), height/8*(ypos+1));
         draw.draw(canvas);
         */
+
+        if (model == null)
+            return;
+
+        Paint redPaint = new Paint();
+        redPaint.setARGB(255, 255, 0, 0);
+        for (Node node : model.getNodes()) {
+            if (node.isMarked()) {
+                canvas.drawCircle(
+                        (float)(width/8*(node.getXCoordinate()+0.5)),
+                        (float)(height/8*(node.getYCoordinate()+0.5)),
+                        (float)(Math.min(width/16,height/16)),
+                        redPaint);
+            }
+        }
     }
 
     @Override
