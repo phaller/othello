@@ -9,6 +9,9 @@ import kth.game.othello.imp.NodeImp;
 import kth.game.othello.imp.OthelloFactoryImp;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String GAME_TYPE = "GAME_TYPE";
+    public static final String GAME_HUMAN = "HUMAN";
+
     OthelloFactory gameFactory = new OthelloFactoryImp();
     Othello game;
 
@@ -19,7 +22,10 @@ public class MainActivity extends AppCompatActivity {
 
         final BoardView boardView = (BoardView) findViewById(R.id.boardView);
 
-        game = gameFactory.createHumanGame();
+        if (this.getIntent().getExtras().getString(GAME_TYPE).equals(GAME_HUMAN)) {
+            game = gameFactory.createHumanGame();
+        }
+
         game.start();
 
         boardView.setModel(game.getBoard());
