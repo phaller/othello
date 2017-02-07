@@ -82,13 +82,16 @@ public class BoardView extends View {
 
         Paint redPaint = new Paint();
         redPaint.setARGB(255, 255, 0, 0);
+        Paint greenPaint = new Paint();
+        greenPaint.setARGB(255, 0, 255, 0);
         for (Node node : model.getNodes()) {
             if (node.isMarked()) {
+                Paint color = node.getOccupantPlayerId().equals("P1") ? redPaint : greenPaint;
                 canvas.drawCircle(
                         (float)(width/8*(node.getXCoordinate()+0.5)),
                         (float)(height/8*(node.getYCoordinate()+0.5)),
                         (float)(Math.min(width/16,height/16)),
-                        redPaint);
+                        color);
             }
         }
     }

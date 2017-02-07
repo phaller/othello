@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import kth.game.othello.Othello;
 import kth.game.othello.OthelloFactory;
+import kth.game.othello.imp.NodeImp;
 import kth.game.othello.imp.OthelloFactoryImp;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,9 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
         game = gameFactory.createHumanGame();
         game.start();
-        game.move("P1", "0,0");
 
         boardView.setModel(game.getBoard());
-        boardView.invalidate();
+        boardView.setEventListener(new BoardView.BoardViewListener() {
+            @Override
+            public void onClick(int x, int y) {
+                String nodeId = NodeImp.format(x,y);
+                game.move(game.getPlayerInTurn().getId(), nodeId);
+                boardView.invalidate();
+            }
+        });
     }
 }

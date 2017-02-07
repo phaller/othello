@@ -24,7 +24,7 @@ public class NodeImp implements Node {
 
     @Override
     public String getId() {
-        return String.format("%d,%d", x, y);
+        return format(x, y);
     }
     
     @Override
@@ -52,4 +52,7 @@ public class NodeImp implements Node {
         return Integer.valueOf(nodeId.split(",")[1]);
     }
 
+    public static String format(int x, int y) {
+        return String.format("%d,%d", x, y);
+    }
 }
