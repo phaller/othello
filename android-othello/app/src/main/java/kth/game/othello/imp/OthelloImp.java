@@ -40,7 +40,9 @@ public class OthelloImp implements Othello {
 
     @Override
     public List<Player> getPlayers() {
-        Vector<Player> res = new Vector<Player>();
+        List<Player> res = new Vector<Player>();
+        res.add(playerOne);
+        res.add(playerTwo);
         return res;
     }
 
@@ -59,10 +61,20 @@ public class OthelloImp implements Othello {
         return true;
     }
 
+    private void swapPlayer() {
+        if (currentPlayer == playerOne)
+            currentPlayer = playerTwo;
+        else
+            currentPlayer = playerOne;
+    }
+
     @Override
     public List<Node> move() {
         if (currentPlayer.getType() != Player.Type.COMPUTER)
             throw new IllegalStateException("Current player is not a computer");
+
+        swapPlayer();
+
         return new Vector<Node>();
     }
 
@@ -72,15 +84,16 @@ public class OthelloImp implements Othello {
             throw new IllegalStateException("Current player is not a human");
         if (! isMoveValid(playerId, nodeId))
             throw new IllegalStateException("Invalid move");
+        if (playerId != currentPlayer.getId())
+            throw new IllegalStateException("Invalid player ID");
 
         List<Node> res = new Vector<Node>();
-        for (Node node : getBoard().getNodes()) {
-            if (node.getId() == nodeId) {
-                Node newNode = new NodeImp(nodeId, playerId);
-                board.setNode(newNode);
-                res.add(newNode);
-            }
-        }
+        Node newNode = new NodeImp(nodeId, playerId);
+        board.setNode(newNode);
+        res.add(newNode);
+
+        swapPlayer();
+        
         return res;
     }
 

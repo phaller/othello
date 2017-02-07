@@ -36,21 +36,20 @@ public class NodeImp implements Node {
     public int getXCoordinate() {
         return x;
     }
-    public static int getXCoordinate(String nodeId) {
-        return Integer.valueOf(nodeId.split(",")[0]);
-    }
-
     @Override
     public int getYCoordinate() {
         return y;
     }
-    public static int getYCoordinate(String nodeId) {
-        return Integer.valueOf(nodeId.split(",")[1]);
-    }
-
     @Override
     public boolean isMarked() {
         return (playerId != null);
+    }
+
+    public static int getXCoordinate(String nodeId) {
+        return Integer.valueOf(nodeId.split(",")[0]);
+    }
+    public static int getYCoordinate(String nodeId) {
+        return Integer.valueOf(nodeId.split(",")[1]);
     }
 
 }

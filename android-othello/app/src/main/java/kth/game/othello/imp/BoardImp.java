@@ -12,6 +12,7 @@ import kth.game.othello.board.Node;
 public class BoardImp implements Board {
     Node nodes[][] = new Node[8][8];
 
+    // TODO: Correctly initialize the four inital nodes
     public BoardImp() {
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
