@@ -1,5 +1,6 @@
 package se.kth.swaccademy.androidothello;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import kth.game.othello.imp.OthelloFactoryImp;
 public class MainActivity extends AppCompatActivity {
     public static final String GAME_TYPE = "GAME_TYPE";
     public static final String GAME_HUMAN = "HUMAN";
+    public static final String GAME_RESULT = "GAME_RESULT";
 
     OthelloFactory gameFactory = new OthelloFactoryImp();
     Othello game;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void quitGame(View view) {
         Intent intent = new Intent(this, MenuActivity.class);
+        intent.putExtra(GAME_RESULT, "P1");
+        setResult(RESULT_OK, intent);
         super.finish();
     }
 }
