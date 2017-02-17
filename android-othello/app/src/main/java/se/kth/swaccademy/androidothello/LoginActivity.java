@@ -1,8 +1,8 @@
 package se.kth.swaccademy.androidothello;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.ArrayMap;
 import android.view.View;
 import android.widget.EditText;
@@ -24,7 +24,7 @@ import kth.game.othello.Othello;
 import kth.game.othello.OthelloFactory;
 import kth.game.othello.imp.OthelloFactoryImp;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends Activity {
     public static final String GAME_TYPE = "GAME_TYPE";
     public static final String GAME_HUMAN = "HUMAN";
     public static final String GAME_RESULT = "GAME_RESULT";
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         String pwd = inputPwd.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://130.237.224.92:4567/login/" + login;
+        String url ="http://130.237.224.147:4567/login/" + login;
 
         final Map<String, String> mHeaders = new ArrayMap<String, String>();
         mHeaders.put("pwd", pwd);
