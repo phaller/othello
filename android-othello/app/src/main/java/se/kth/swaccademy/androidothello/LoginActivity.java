@@ -45,7 +45,7 @@ public class LoginActivity extends Activity {
         String pwd = inputPwd.getText().toString();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://130.237.224.147:4567/login/" + login;
+        String url ="http://10.0.2.2:4567/login/" + login;
 
         final Map<String, String> mHeaders = new ArrayMap<String, String>();
         mHeaders.put("pwd", pwd);
