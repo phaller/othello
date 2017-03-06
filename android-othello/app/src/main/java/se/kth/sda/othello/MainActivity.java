@@ -21,7 +21,7 @@ import java.util.Map;
 
 import se.kth.sda.othello.imp.NodeImp;
 import se.kth.sda.othello.imp.OthelloFactoryImp;
-import se.kth.swaccademy.androidothello.R;
+import se.kth.sda.othello.R;
 
 public class MainActivity extends Activity {
     public static final String GAME_TYPE = "GAME_TYPE";

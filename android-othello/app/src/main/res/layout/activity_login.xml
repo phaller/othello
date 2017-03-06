@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="se.kth.swaccademy.androidothello.se.kth.sda.othello.MainActivity">
+    tools:context="se.kth.sda.othello.MainActivity">
 
     <EditText
         android:layout_width="wrap_content"

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import se.kth.sda.othello.MainActivity;
-import se.kth.swaccademy.androidothello.R;
+import se.kth.sda.othello.R;
 
 public class MenuActivity extends Activity {
     @Override
