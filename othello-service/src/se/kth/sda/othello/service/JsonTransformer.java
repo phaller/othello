@@ -1,4 +1,4 @@
-package se.kth.swacademy.othelloservice;
+package se.kth.sda.othello.service;
 
 import com.google.gson.Gson;
 
@@ -10,5 +10,4 @@ public class JsonTransformer implements ResponseTransformer {
 	public String render(Object model) throws Exception {
 		return gson.toJson(model);
 	}
-
 }
