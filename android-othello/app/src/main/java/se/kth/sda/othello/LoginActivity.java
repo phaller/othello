@@ -1,10 +1,11 @@
-package se.kth.swaccademy.androidothello;
+package se.kth.sda.othello;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -19,14 +20,10 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-import kth.game.othello.Othello;
-import kth.game.othello.OthelloFactory;
-import kth.game.othello.imp.NodeImp;
-import kth.game.othello.imp.OthelloFactoryImp;
+import se.kth.sda.othello.imp.OthelloFactoryImp;
+import se.kth.swaccademy.androidothello.R;
 
-import static android.app.Activity.RESULT_OK;
-
-public class MainActivity extends Activity {
+public class LoginActivity extends Activity {
     public static final String GAME_TYPE = "GAME_TYPE";
     public static final String GAME_HUMAN = "HUMAN";
     public static final String GAME_RESULT = "GAME_RESULT";
@@ -37,60 +34,33 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        final BoardView boardView = (BoardView) findViewById(R.id.boardView);
-
-        if (this.getIntent().getExtras().getString(GAME_TYPE).equals(GAME_HUMAN)) {
-            game = gameFactory.createHumanGame();
-        }
-
-        game.start();
-
-        boardView.setModel(game.getBoard());
-        boardView.setEventListener(new BoardView.BoardViewListener() {
-            @Override
-            public void onClick(int x, int y) {
-                String nodeId = NodeImp.format(x,y);
-                game.move(game.getPlayerInTurn().getId(), nodeId);
-                boardView.invalidate();
-            }
-        });
+        setContentView(R.layout.activity_login);
     }
 
-    public void quitGame(View view) {
+    public void login(View view) {
+        EditText inputLogin = (EditText) findViewById(R.id.edit_login);
+        String login = inputLogin.getText().toString();
+        EditText inputPwd = (EditText) findViewById(R.id.edit_pwd);
+        String pwd = inputPwd.getText().toString();
+
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://130.237.224.92:4567/report/" + "roberto";
+        String url ="http://10.0.2.2:4567/login/" + login;
 
         final Map<String, String> mHeaders = new ArrayMap<String, String>();
-        mHeaders.put("pwd", "123456");
-
-        final JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("winner", "P1");
-            jsonBody.put("duration", "12");
-            jsonBody.put("moves", "108");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        mHeaders.put("pwd", pwd);
 
         // Request a string response from the provided URL.
-        JsonObjectRequest stringRequest = new JsonObjectRequest(
-                Request.Method.POST, url,
-                jsonBody,
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        String str = response.toString();
-
                         try {
                             Toast.makeText(getBaseContext(), response.getString("wins"), Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getBaseContext(), MenuActivity.class);
+                            startActivityForResult(intent, 0);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Intent intent = new Intent(getBaseContext(), MenuActivity.class);
-                        startActivityForResult(intent, 0);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -104,10 +74,6 @@ public class MainActivity extends Activity {
         };
 
         queue.add(stringRequest);
-
-        Intent intent = new Intent(this, MenuActivity.class);
-        intent.putExtra(GAME_RESULT, "P1");
-        setResult(RESULT_OK, intent);
-        super.finish();
     }
+
 }

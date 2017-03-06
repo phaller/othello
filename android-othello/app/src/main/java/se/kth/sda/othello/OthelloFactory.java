@@ -1,4 +1,6 @@
-package kth.game.othello;
+package se.kth.sda.othello;
+
+import se.kth.sda.othello.Othello;
 
 /**
  * A factory for producing othello games.

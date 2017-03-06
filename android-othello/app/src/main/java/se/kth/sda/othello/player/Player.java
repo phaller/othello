@@ -1,4 +1,4 @@
-package kth.game.othello.player;
+package se.kth.sda.othello.player;
 
 /**
  * A representation of player.

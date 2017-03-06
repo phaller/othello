@@ -1,10 +1,10 @@
-package kth.game.othello;
+package se.kth.sda.othello;
 
 import java.util.List;
 
-import kth.game.othello.board.Board;
-import kth.game.othello.board.Node;
-import kth.game.othello.player.Player;
+import se.kth.sda.othello.board.Board;
+import se.kth.sda.othello.board.Node;
+import se.kth.sda.othello.player.Player;
 
 /**
  * This class represents an Othello game.

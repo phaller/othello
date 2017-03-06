@@ -1,4 +1,4 @@
-package kth.game.othello.board;
+package se.kth.sda.othello.board;
 
 /**
  * The responsibility of a node is to keep information of which player is occupying it.

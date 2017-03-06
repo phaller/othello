@@ -1,6 +1,6 @@
-package kth.game.othello.imp;
+package se.kth.sda.othello.imp;
 
-import kth.game.othello.board.Node;
+import se.kth.sda.othello.board.Node;
 
 /**
  * Created by robertog on 2/7/17.

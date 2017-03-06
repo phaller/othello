@@ -1,4 +1,4 @@
-package se.kth.swaccademy.androidothello;
+package se.kth.sda.othello;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,8 +9,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import kth.game.othello.board.Board;
-import kth.game.othello.board.Node;
+import se.kth.sda.othello.board.Board;
+import se.kth.sda.othello.board.Node;
 
 /**
  * Created by robertog on 2/7/17.

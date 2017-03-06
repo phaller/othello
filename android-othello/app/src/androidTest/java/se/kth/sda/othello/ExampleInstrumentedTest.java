@@ -1,4 +1,4 @@
-package se.kth.swaccademy.androidothello;
+package se.kth.sda.othello;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,6 +1,6 @@
-package kth.game.othello.imp;
+package se.kth.sda.othello.imp;
 
-import kth.game.othello.player.Player;
+import se.kth.sda.othello.player.Player;
 
 /**
  * Created by robertog on 2/7/17.
